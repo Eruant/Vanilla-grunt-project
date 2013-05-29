@@ -9,6 +9,10 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		jshint: {
+			options: {
+				strict: true,
+				white: true
+			},
 			all: [
 				'<%= pkg.src.js %>/*.js'
 			]
@@ -58,7 +62,7 @@ module.exports = function (grunt) {
 		watch: {
 			scripts: {
 				files: '<%= pkg.src.js %>/*.js',
-				tasks: ['jshint', 'uglify']
+				tasks: ['uglify', 'jshint', 'uglify']
 			},
 			styles: {
 				files: '<%= pkg.src.css %>/*.css',

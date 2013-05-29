@@ -1,6 +1,6 @@
 /*global Class, define, window */
 
-define(function () {
+define('Parent', function () {
 	'use strict';
 	
 	return Class.extend({

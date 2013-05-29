@@ -1,7 +1,7 @@
 /*jslint nomen:true */
-/*global Parent, define, window */
+/*global Parent, define */
 
-define([Parent], function (Parent) {
+define('Child', ['Parent'], function (Parent) {
 	'use strict';
 	
 	return Parent.extend({
