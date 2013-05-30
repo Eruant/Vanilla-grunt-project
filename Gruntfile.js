@@ -108,7 +108,7 @@ module.exports = function (grunt) {
 	/*
 	 * Load the plugins that we use in the initConfig file
 	 */
-	grunt.loadNpmTasks('grunt-contrib-watch');		// listens for changes and triggures tasks
+	grunt.loadNpmTasks('grunt-contrib-watch');		// listens for changes and triggers tasks
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// looks for errors in JavaScript
 	grunt.loadNpmTasks('grunt-contrib-uglify');		// combines and minifies JavaScript files
 	grunt.loadNpmTasks('grunt-contrib-cssmin');		// combines and minifies css files
