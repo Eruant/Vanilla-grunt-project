@@ -24,9 +24,20 @@ module.exports = function (grunt) {
 					except: ['jQuery']
 				}
 			},
-			build: {
-				src: '<%= pkg.src.js %>/*.js',
-				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.min.js'
+			build_lib: {
+				src: '<%= pkg.src.js %>/lib/*.js',
+				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.lib.min.js'
+			},
+			build_mod: {
+				src: '<%= pkg.src.js %>/modules/*.js',
+				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.modules.min.js'
+			},
+			build_all: {
+				src: [
+					'<%= pkg.src.js %>/lib/*.js',
+					'<%= pkg.src.js %>/modules/*.js'
+				],
+				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.all.min.js'
 			}
 		},
 		cssmin: {
