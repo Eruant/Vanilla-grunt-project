@@ -11,7 +11,7 @@ define('Parent', ['Class'], function (Class) {
 			window.console.log('Parent: ' + this.name, this);
 		},
 		parentFunction: function () {
-			window.console.log('parent', this);
+			window.console.log('parentFunction', this);
 		}
 	});
 });
