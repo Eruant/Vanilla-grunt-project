@@ -4,7 +4,9 @@ module.exports = function (grunt) {
 	'use strict';
 	
 	/*
-	 * Configure the projects
+	 * Configure the processes that will be called
+	 * You can call a process directly with `$ grunt <process>(:<option>)`
+	 * e.g. `$ grunt uglify` or `$ grunt uglify:build_all`
 	 */
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -104,17 +106,17 @@ module.exports = function (grunt) {
 	});
 	
 	/*
-	 * Load the plugins
+	 * Load the plugins that we use in the initConfig file
 	 */
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-htmlmin');
-	grunt.loadNpmTasks('grunt-smushit');
+	grunt.loadNpmTasks('grunt-contrib-watch');		// listens for changes and triggures tasks
+	grunt.loadNpmTasks('grunt-contrib-jshint');		// looks for errors in JavaScript
+	grunt.loadNpmTasks('grunt-contrib-uglify');		// combines and minifies JavaScript files
+	grunt.loadNpmTasks('grunt-contrib-cssmin');		// combines and minifies css files
+	grunt.loadNpmTasks('grunt-contrib-htmlmin');	// minifies html files
+	grunt.loadNpmTasks('grunt-smushit');			// lossless compression of images
 	
 	/*
-	 * Set the tasks
+	 * Set the the tasks that will be run from the command line (default will be called automatically)
 	 */
 	grunt.registerTask('default', ['watch']);											// $ grunt
 	grunt.registerTask('all', ['jshint', 'uglify', 'cssmin', 'htmlmin', 'smushit']);	// $ grunt all
