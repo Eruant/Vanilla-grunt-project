@@ -147,7 +147,7 @@ var requirejs, require, define;
             this.id = a, this.options = b, window.console.log("Parent: " + this.name, this);
         },
         parentFunction: function() {
-            window.console.log("parent", this);
+            window.console.log("parentFunction", this);
         }
     });
 }), function() {

@@ -116,6 +116,7 @@ module.exports = function (grunt) {
 	/*
 	 * Set the tasks
 	 */
-	grunt.registerTask('default', ['watch']);
+	grunt.registerTask('default', ['watch']);											// $ grunt
+	grunt.registerTask('all', ['jshint', 'uglify', 'cssmin', 'htmlmin', 'smushit']);	// $ grunt all
 
 };
