@@ -22,7 +22,8 @@ module.exports = function (grunt) {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
 				mangle: {
 					except: ['jQuery']
-				}
+				},
+				sourceMap: '<%= pkg.dest.js %>/source-map.js'
 			},
 			build_lib: {
 				src: '<%= pkg.src.js %>/lib/*.js',
@@ -35,7 +36,8 @@ module.exports = function (grunt) {
 			build_all: {
 				src: [
 					'<%= pkg.src.js %>/lib/*.js',
-					'<%= pkg.src.js %>/modules/*.js'
+					'<%= pkg.src.js %>/modules/*.js',
+					'<%= pkg.src.js %>/main.js'
 				],
 				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.all.min.js'
 			}
