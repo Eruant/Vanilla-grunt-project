@@ -1,5 +1,6 @@
 /*jslint nomen:true */
 /*global define*/
+
 define('Class', function () {
 	'use strict';
 	
@@ -69,4 +70,4 @@ define('Class', function () {
 	};
 	
 	return Class;
-})();
+});

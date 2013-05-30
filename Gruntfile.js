@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 				mangle: {
 					except: ['jQuery']
 				},
-				sourceMap: '<%= pkg.dest.js %>/source-map.js'
+				sourceMap: '../<%= pkg.dest.js %>/source-map.js'
 			},
 			build_lib: {
 				src: '<%= pkg.src.js %>/lib/*.js',
@@ -40,6 +40,17 @@ module.exports = function (grunt) {
 					'<%= pkg.src.js %>/main.js'
 				],
 				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.all.min.js'
+			},
+			beautify_all: {
+				options: {
+					beautify: true
+				},
+				src: [
+					'<%= pkg.src.js %>/lib/*.js',
+					'<%= pkg.src.js %>/modules/*.js',
+					'<%= pkg.src.js %>/main.js'
+				],
+				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.all.js'
 			}
 		},
 		cssmin: {
@@ -74,11 +85,11 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			scripts: {
-				files: '<%= pkg.src.js %>/*.js',
+				files: '<%= pkg.src.js %>/**/*.js',
 				tasks: ['uglify', 'jshint', 'uglify']
 			},
 			styles: {
-				files: '<%= pkg.src.css %>/*.css',
+				files: '<%= pkg.src.css %>/**/*.css',
 				tasks: ['cssmin']
 			},
 			html: {

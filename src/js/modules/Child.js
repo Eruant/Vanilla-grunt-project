@@ -6,9 +6,12 @@ define('Child', ['Parent'], function (Parent) {
 	
 	return Parent.extend({
 		name: 'Child Class',
-		init: function () {
-			this._super();
-			window.console.log(this.name, this);
+		init: function (id, options) {
+			this._super(id, options);
+			window.console.log('Child: ' + this.name, this);
+		},
+		childFunction: function () {
+			window.console.log('childFunction', this);
 		}
 	});
 });

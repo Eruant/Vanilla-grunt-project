@@ -1,10 +1,11 @@
 /*globals require, window*/
 
-require(['Class'], function (Class) {
+(function () {
 	'use strict';
 
-	window.console.log('Main function');
-	
-	var a = new Class();
-	a.init();
-});
+    require(['Child'], function (Child) {
+		var a = new Child('test1',  { options1: 'child options param'});
+		a.childFunction();
+		a.parentFunction();
+	});
+}());
