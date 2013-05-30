@@ -133,6 +133,7 @@ module.exports = function (grunt) {
 	 * Set the the tasks that will be run from the command line (default will be called automatically)
 	 */
 	grunt.registerTask('default', ['watch']);											// $ grunt
-	grunt.registerTask('all', ['jshint', 'uglify', 'cssmin', 'htmlmin', 'smushit']);	// $ grunt all
+	grunt.registerTask('all', ['jshint', 'uglify', 'sass', 'htmlmin', 'smushit']);		// $ grunt all
+	grunt.registerTask('noSASS', ['jshint', 'uglify', 'cssmin', 'htmlmin', 'smushit']);	// $ grunt noSASS
 
 };
