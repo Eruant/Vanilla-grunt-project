@@ -64,6 +64,16 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		sass: {
+			build: {
+				files: {
+					'<%= pkg.dest.css %>/<%= pkg.name %>.min.css': [
+						'<%= pkg.src.css %>/*.css',
+						'<%= pkg.src.css %>/*.scss'
+					]
+				}
+			}
+		},
 		htmlmin: {
 			build_html: {
 				options: {
@@ -91,8 +101,11 @@ module.exports = function (grunt) {
 				tasks: ['uglify', 'jshint', 'uglify']
 			},
 			styles: {
-				files: '<%= pkg.src.css %>/**/*.css',
-				tasks: ['cssmin']
+				files: [
+					'<%= pkg.src.css %>/**/*.css',
+					'<%= pkg.src.css %>/**/*.scss'
+				],
+				tasks: ['sass']
 			},
 			html: {
 				files: '<%= pkg.src.html %>/*.html',
@@ -112,6 +125,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// looks for errors in JavaScript
 	grunt.loadNpmTasks('grunt-contrib-uglify');		// combines and minifies JavaScript files
 	grunt.loadNpmTasks('grunt-contrib-cssmin');		// combines and minifies css files
+	grunt.loadNpmTasks('grunt-contrib-sass');		// combines and minifies sass + scss files
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');	// minifies html files
 	grunt.loadNpmTasks('grunt-smushit');			// lossless compression of images
 	
