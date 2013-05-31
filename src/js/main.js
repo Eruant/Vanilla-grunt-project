@@ -8,4 +8,13 @@
 		a.childFunction();
 		a.parentFunction();
 	});
+	
+	require(['Facebook'], function (Facebook) {
+		
+		var facebook = new Facebook('js-root', {
+			appId: '296561463809004',
+			status: true
+		});
+
+	});
 }());

@@ -1,4 +1,4 @@
-/*! playground 30-05-2013 */
+/*! playground 31-05-2013 */
 var requirejs, require, define;
 
 (function(a) {
@@ -139,6 +139,51 @@ var requirejs, require, define;
         for (h in c) c.hasOwnProperty(h) && (g[h] = "function" == typeof c[h] && "function" == typeof i[h] && b.test(c[h]) ? d(h, c[h], i) : c[h]);
         return f.prototype = g, f.prototype.constructor = f, f.extend = e, f;
     }, c;
+}), define("Facebook", [ "Class" ], function(a) {
+    "use strict";
+    return a.extend({
+        init: function(a, b) {
+            var c = this;
+            window.fbAsyncInit = function() {
+                FB.init(b), c.getLoginStatus();
+            }, function(a) {
+                var b, c = "facebook-jssdk", d = a.getElementsByTagName("script")[0];
+                a.getElementById(c) || (b = a.createElement("script"), b.id = c, b.async = !0, b.src = "//connect.facebook.net/en_US/all.js", 
+                d.parentNode.insertBefore(b, d));
+            }(window.document);
+        },
+        subscribe: function() {
+            var a = this;
+            FB.Event.subscribe("auth.authResponseChange", function(b) {
+                a.loginResponse(b);
+            });
+        },
+        getLoginStatus: function() {
+            var a = this;
+            FB.getLoginStatus(function(b) {
+                "connected" === b.status ? a.ready() : "not_authorized" === b.status ? a.login() : a.login();
+            });
+        },
+        login: function() {
+            var a = this;
+            FB.login(function(b) {
+                a.loginResponse(b);
+            });
+        },
+        loginResponse: function(a) {
+            var b = this;
+            "connected" === a.status && a.authResponse ? b.ready() : "not_authorized" === a.status ? b.error("User not authorized") : b.error("User not logged in");
+        },
+        ready: function() {
+            this.subscribe(), window.console.log("Ready");
+        },
+        error: function(a) {
+            window.console.log("Error: " + a);
+        },
+        request: function(a, b) {
+            FB.api(a, b);
+        }
+    });
 }), define("Parent", [ "Class" ], function(a) {
     "use strict";
     return a.extend({
@@ -157,6 +202,11 @@ var requirejs, require, define;
             options1: "child options param"
         });
         b.childFunction(), b.parentFunction();
+    }), require([ "Facebook" ], function(a) {
+        new a("js-root", {
+            appId: "296561463809004",
+            status: !0
+        });
     });
 }();
 //# sourceMappingURL=../bin/js/source-map.js
