@@ -53,6 +53,10 @@ module.exports = function (grunt) {
 					'<%= pkg.src.js %>/main.js'
 				],
 				dest: '<%= pkg.dest.js %>/<%= pkg.name %>.all.js'
+			},
+			build_node: {
+				src: '<%= pkg.src.js %>/node/*.js',
+				dest: '<%= pkg.dest.js %>/node/start.js'
 			}
 		},
 		cssmin: {
