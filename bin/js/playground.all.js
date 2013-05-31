@@ -197,16 +197,14 @@ var requirejs, require, define;
     });
 }), function() {
     "use strict";
-    require([ "Child" ], function(a) {
-        var b = new a("test1", {
-            options1: "child options param"
-        });
-        b.childFunction(), b.parentFunction();
-    }), require([ "Facebook" ], function(a) {
-        new a("js-root", {
+    require([ "Child", "Facebook" ], function(a, b) {
+        var c = (new b("js-root", {
             appId: "296561463809004",
             status: !0
-        });
+        }), new a("test1", {
+            options1: "child options param"
+        }));
+        c.childFunction(), c.parentFunction();
     });
 }();
 //# sourceMappingURL=../bin/js/source-map.js
