@@ -9,10 +9,11 @@ var http = require('http'),
 http.createServer(function (req, res) {
 	'use strict';
 
-	var uri = url.parse(req.url).pathname,
-		filename = 'bin/' + path.join(process.cwd(), uri);
+	var uri = 'bin/' + url.parse(req.url).pathname,
+		filename = path.join(process.cwd(), uri);
 	
 	console.log('Filename: ' + filename);
+	console.log('URI: ' + url);
 	
 	path.exists(filename, function (exists) {
 		if (!exists) {
