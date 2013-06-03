@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
 		}
 		
 		if (fs.statSync(filename).isDirectory()) {
-			filename += 'index.html';
+			filename += 'bin/index.html';
 		}
 		
 		fs.readFile(filename, 'binary', function (err, file) {
