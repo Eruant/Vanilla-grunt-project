@@ -12,9 +12,6 @@ http.createServer(function (req, res) {
 	var uri = 'bin/' + url.parse(req.url).pathname,
 		filename = path.join(process.cwd(), uri);
 	
-	console.log('Filename: ' + filename);
-	console.log('URI: ' + url);
-	
 	path.exists(filename, function (exists) {
 		if (!exists) {
 			res.writeHead(404, {
