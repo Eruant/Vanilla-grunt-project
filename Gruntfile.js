@@ -117,7 +117,10 @@ module.exports = function (grunt) {
 					'<%= pkg.src.css %>/**/*.css',
 					'<%= pkg.src.css %>/**/*.scss'
 				],
-				tasks: ['sass']
+				tasks: ['sass'],
+				options: {
+					livereload: true
+				}
 			},
 			html: {
 				files: '<%= pkg.src.html %>/*.html',

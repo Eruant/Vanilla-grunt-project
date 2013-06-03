@@ -1,4 +1,13 @@
 body {
-  background: #333333 none;
+  background: #333355 none;
   color: white;
-  font-family: Arial, sans-serif; }
+  font-family: Arial, sans-serif;
+  padding: 10px; }
+
+h1 {
+  margin: 0;
+  padding: 0 0 10px; }
+
+p {
+  margin: 0;
+  padding: 0 0 10px; }
