@@ -99,10 +99,18 @@ module.exports = function (grunt) {
 				dest: '<%= pkg.dest.assets %>/img'
 			}
 		},
+		jsduck: {
+			main: {
+				src: [
+					'<%= pkg.src.js %>/modules'
+				],
+				dest: '<%= pkg.dest.docs %>'
+			}
+		},
 		watch: {
 			scripts: {
 				files: '<%= pkg.src.js %>/**/*.js',
-				tasks: ['uglify', 'jshint', 'uglify']
+				tasks: ['uglify', 'jshint', 'uglify', 'jsduck']
 			},
 			styles: {
 				files: [
@@ -132,6 +140,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');		// combines and minifies sass + scss files
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');	// minifies html files
 	grunt.loadNpmTasks('grunt-smushit');			// lossless compression of images
+	grunt.loadNpmTasks('grunt-jsduck');				// documentation generator
 	
 	/*
 	 * Set the the tasks that will be run from the command line (default will be called automatically)

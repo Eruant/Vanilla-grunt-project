@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*jslint nomen:true */
+/*global define, FB, window */
+<span id='Facebook'>/**
+</span> * @class Facebook
+ * Facebook authorization
+ * @extends Class
+ */
+
+define('Facebook', ['Class'], function (Class) {
+	'use strict';
+	
+	return Class.extend({
+		
+<span id='Facebook-method-init'>		/**
+</span>		 * Initializing function
+		 * Asynchronously loads the facebook SDK
+		 */
+		init: function (id, options) {
+			
+			var me = this;
+
+			window.fbAsyncInit = function () {
+				FB.init(options);
+				me.getLoginStatus();
+			};
+			
+			(function (d) {
+				var js,
+					id = 'facebook-jssdk',
+					ref = d.getElementsByTagName('script')[0];
+				if (d.getElementById(id)) { return; }
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = '//connect.facebook.net/en_US/all.js';
+				ref.parentNode.insertBefore(js, ref);
+			}(window.document));
+		},
+		
+<span id='Facebook-method-subscribe'>		/**
+</span>		 * Looks for changes in the status of the user
+		 */
+		subscribe: function () {
+			
+			var me = this;
+			
+			FB.Event.subscribe('auth.authResponseChange', function (response) {
+				me.loginResponse(response);
+			});
+		},
+		
+<span id='Facebook-method-getLoginStatus'>		/**
+</span>		 * Gets the login status of the user
+		 */
+		getLoginStatus: function () {
+			
+			var me = this;
+			
+			FB.getLoginStatus(function (response) {
+				if (response.status === 'connected') {
+					// app connected
+					me.ready();
+				} else if (response.status === 'not_authorized') {
+					// app not authorized
+					me.login();
+				} else {
+					// app not logged in
+					me.login();
+				}
+			});
+		},
+		
+<span id='Facebook-method-login'>		/**
+</span>		 * tries to log a use in
+		 */
+		login: function () {
+			
+			var me = this;
+			
+			FB.login(function (response) {
+				me.loginResponse(response);
+			});
+		},
+		
+<span id='Facebook-method-loginResponse'>		/**
+</span>		 * Deals with the login response from Facebook
+		 */
+		loginResponse: function (response) {
+			
+			var me = this;
+			
+			if (response.status === 'connected' &amp;&amp; response.authResponse) {
+				me.ready();
+			} else if (response.status === 'not_authorized') {
+				me.error('User not authorized');
+			} else {
+				me.error('User not logged in');
+			}
+		},
+		
+<span id='Facebook-method-ready'>		/**
+</span>		 * Called after a user is successfully authenticated
+		 */
+		ready: function () {
+			this.subscribe();
+			window.console.log('Ready');
+		},
+		
+<span id='Facebook-method-error'>		/**
+</span>		 * Called if an error occurs
+		 */
+		error: function (msg) {
+			window.console.log('Error: ' + msg);
+		},
+		
+<span id='Facebook-method-request'>		/**
+</span>		 * Makes a request to facebook
+		 */
+		request: function (url, callback) {
+			FB.api(url, callback);
+		}
+		
+	});
+});</pre>
+</body>
+</html>

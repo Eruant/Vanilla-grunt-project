@@ -1,11 +1,20 @@
 /*jslint nomen:true */
 /*global define, FB, window */
+/**
+ * @class Facebook
+ * Facebook authorization
+ * @extends Class
+ */
 
 define('Facebook', ['Class'], function (Class) {
 	'use strict';
 	
 	return Class.extend({
 		
+		/**
+		 * Initializing function
+		 * Asynchronously loads the facebook SDK
+		 */
 		init: function (id, options) {
 			
 			var me = this;
@@ -28,6 +37,9 @@ define('Facebook', ['Class'], function (Class) {
 			}(window.document));
 		},
 		
+		/**
+		 * Looks for changes in the status of the user
+		 */
 		subscribe: function () {
 			
 			var me = this;
@@ -37,6 +49,9 @@ define('Facebook', ['Class'], function (Class) {
 			});
 		},
 		
+		/**
+		 * Gets the login status of the user
+		 */
 		getLoginStatus: function () {
 			
 			var me = this;
@@ -55,6 +70,9 @@ define('Facebook', ['Class'], function (Class) {
 			});
 		},
 		
+		/**
+		 * tries to log a use in
+		 */
 		login: function () {
 			
 			var me = this;
@@ -64,6 +82,9 @@ define('Facebook', ['Class'], function (Class) {
 			});
 		},
 		
+		/**
+		 * Deals with the login response from Facebook
+		 */
 		loginResponse: function (response) {
 			
 			var me = this;
@@ -77,15 +98,24 @@ define('Facebook', ['Class'], function (Class) {
 			}
 		},
 		
+		/**
+		 * Called after a user is successfully authenticated
+		 */
 		ready: function () {
 			this.subscribe();
 			window.console.log('Ready');
 		},
 		
+		/**
+		 * Called if an error occurs
+		 */
 		error: function (msg) {
 			window.console.log('Error: ' + msg);
 		},
 		
+		/**
+		 * Makes a request to facebook
+		 */
 		request: function (url, callback) {
 			FB.api(url, callback);
 		}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">/*jslint nomen:true */
+/*global Parent, define, window */
+<span id='Child'>/**
+</span> * @class Child
+ * This is a child function
+ * @extends Parent
+ */
+
+define('Child', ['Parent'], function (Parent) {
+	'use strict';
+	
+	return Parent.extend({
+<span id='Child-cfg-name'>		/**
+</span>		 *	@cfg {String} name
+		 * The name of the class
+		 */
+		name: 'Child Class',
+<span id='Child-method-init'>		/**
+</span>		 * Initializing function
+		 */
+		init: function (id, options) {
+			this._super(id, options);
+			window.console.log('Child: ' + this.name, this);
+		},
+<span id='Child-method-childFunction'>		/**
+</span>		 * Child function
+		 * Logs itself
+		 */
+		childFunction: function () {
+			window.console.log('childFunction', this);
+		}
+	});
+});</pre>
+</body>
+</html>

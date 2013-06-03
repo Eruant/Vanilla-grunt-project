@@ -1,5 +1,9 @@
 /*jslint nomen:true */
 /*global define*/
+/**
+ * @class Class
+ * The master class that all other modules inherit from
+ */
 
 define('Class', function () {
 	'use strict';
