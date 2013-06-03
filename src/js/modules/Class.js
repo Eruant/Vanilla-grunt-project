@@ -3,6 +3,7 @@
 /**
  * @class Class
  * The master class that all other modules inherit from
+ * @return {Object} The class object
  */
 
 define('Class', function () {
