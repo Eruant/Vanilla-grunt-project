@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
 	'use strict';
 
 	var uri = url.parse(req.url).pathname,
-		filename = path.join(process.cwd(), uri);
+		filename = path.join(process.cwd(), uri) + 'bin/';
 	
 	path.exists(filename, function (exists) {
 		if (!exists) {
@@ -23,7 +23,7 @@ http.createServer(function (req, res) {
 		}
 		
 		if (fs.statSync(filename).isDirectory()) {
-			filename += 'bin/index.html';
+			filename += 'index.html';
 		}
 		
 		fs.readFile(filename, 'binary', function (err, file) {
