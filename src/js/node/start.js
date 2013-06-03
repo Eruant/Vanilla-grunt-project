@@ -10,7 +10,7 @@ http.createServer(function (req, res) {
 	'use strict';
 
 	var uri = url.parse(req.url).pathname,
-		filename = path.join(process.cwd(), uri) + 'bin/';
+		filename = 'bin/' + path.join(process.cwd(), uri);
 	
 	path.exists(filename, function (exists) {
 		if (!exists) {
